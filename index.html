@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SystemsThink - A Learning Path for System Dynamics</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #16a34a;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray-light: #e2e8f0;
+            --text: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: #15803d;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .learning-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .path-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .path-header {
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .path-body {
+            padding: 1.5rem;
+        }
+        
+        .path-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .topics-preview {
+            margin-top: 1rem;
+            color: var(--text);
+        }
+        
+        .topic-item {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .path-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topic-count {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .explore-btn {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .explore-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .features {
+            background-color: var(--gray-light);
+            padding: 4rem 0;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-description {
+            font-size: 0.95rem;
+        }
+        
+        .roadmap {
+            padding: 4rem 0;
+        }
+        
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .roadmap-section {
+            border-left: 3px solid var(--primary);
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .roadmap-section::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            left: -11px;
+            top: 0;
+        }
+        
+        .roadmap-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .roadmap-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .roadmap-topic {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .roadmap-topic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .path-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .roadmap-topics {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">⟲</span>
+                    SystemsThink
+                </div>
+                <div class="nav-links">
+                    <a href="#learning-paths">Learning Paths</a>
+                    <a href="#features">Features</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#about">About</a>
+                </div>
+            </nav>
+            
+            <div class="hero">
+                <h1>Master System Thinking and Dynamics</h1>
+                <p>From fundamental concepts to expert-level research — follow a structured learning path to understand complex systems and create impactful solutions.</p>
+                <a href="#learning-paths" class="cta-button">Start Learning</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section id="learning-paths">
+            <div class="container">
+                <h2 class="section-title">Learning Paths</h2>
+                <div class="learning-paths">
+                    <div class="path-card">
+                        <div class="path-header">
+                            <h3 class="path-title">Basic</h3>
+                            <p>For beginners starting their systems thinking journey</p>
+                        </div>
+                        <div class="path-body">
+                            <p>Build a solid foundation in systems thinking principles and core concepts.</p>
+                            <div class="topics-preview">
+                                <div class="topic-item">• Introduction to Systems Thinking</div>
+                                <div class="topic-item">• Basic Components of a System</div>
+                                <div class="topic-item">• Understanding Feedback Loops</div>
+                                <div class="topic-item">• Stocks and Flows</div>
+                            </div>
+                        </div>
+                        <div class="path-footer">
+                            <span class="topic-count">20 Topics</span>
+                            <a href="#" class="explore-btn">Explore</a>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <h3 class="path-title">Intermediate</h3>
+                            <p>For those with basic understanding seeking deeper knowledge</p>
+                        </div>
+                        <div class="path-body">
+                            <p>Expand your skills with practical modeling techniques and more complex concepts.</p>
+                            <div class="topics-preview">
+                                <div class="topic-item">• Constructing Causal Loop Diagrams</div>
+                                <div class="topic-item">• Introduction to Systems Archetypes</div>
+                                <div class="topic-item">• Basic Simulation Modeling</div>
+                                <div class="topic-item">• Analyzing Time Delays</div>
+                            </div>
+                        </div>
+                        <div class="path-footer">
+                            <span class="topic-count">20 Topics</span>
+                            <a href="#" class="explore-btn">Explore</a>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <h3 class="path-title">Advanced</h3>
+                            <p>For practitioners looking to master complex systems</p>
+                        </div>
+                        <div class="path-body">
+                            <p>Dive into sophisticated modeling techniques and specialized applications.</p>
+                            <div class="topics-preview">
+                                <div class="topic-item">• Advanced Feedback Loop Structures</div>
+                                <div class="topic-item">• Agent-Based Modeling in Systems</div>
+                                <div class="topic-item">• System Dynamics in Urban Planning</div>
+                                <div class="topic-item">• Advanced Policy Design</div>
+                            </div>
+                        </div>
+                        <div class="path-footer">
+                            <span class="topic-count">30 Topics</span>
+                            <a href="#" class="explore-btn">Explore</a>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <h3 class="path-title">Expert & Research</h3>
+                            <p>For experts and researchers pushing boundaries</p>
+                        </div>
+                        <div class="path-body">
+                            <p>Explore cutting-edge methodologies and contribute to the field.</p>
+                            <div class="topics-preview">
+                                <div class="topic-item">• Expert-Level Systems Integration</div>
+                                <div class="topic-item">• Machine Learning with System Dynamics</div>
+                                <div class="topic-item">• Frontier Research Methods</div>
+                                <div class="topic-item">• Multi-Dimensional Modeling</div>
+                            </div>
+                        </div>
+                        <div class="path-footer">
+                            <span class="topic-count">30 Topics</span>
+                            <a href="#" class="explore-btn">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Why Learn With Us</h2>
+                <div class="features-container">
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">Structured Progression</h3>
+                        <p class="feature-description">Follow a carefully designed learning path that builds knowledge incrementally from basics to advanced concepts.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">Interactive Simulations</h3>
+                        <p class="feature-description">Learn by doing with hands-on system dynamics simulations and interactive modeling exercises.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🧩</div>
+                        <h3 class="feature-title">Real-World Applications</h3>
+                        <p class="feature-description">Connect theory to practice with case studies and examples from business, environment, healthcare, and more.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3 class="feature-title">Community Learning</h3>
+                        <p class="feature-description">Join a community of systems thinkers to collaborate, share insights, and solve complex problems together.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Practical Tools</h3>
+                        <p class="feature-description">Access tutorials for industry-standard software like Vensim, Stella, and other modeling tools.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3 class="feature-title">Expert Guidance</h3>
+                        <p class="feature-description">Learn from experienced practitioners and researchers in the field of system dynamics and complexity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <h2 class="section-title">Complete Learning Roadmap</h2>
+                <div class="roadmap-container">
+                    <div class="roadmap-section">
+                        <h3 class="roadmap-title">Basic Level (Topics 1-20)</h3>
+                        <div class="roadmap-topics">
+                            <div class="roadmap-topic">Introduction to Systems Thinking</div>
+                            <div class="roadmap-topic">Basic Components of a System</div>
+                            <div class="roadmap-topic">Understanding Feedback Loops</div>
+                            <div class="roadmap-topic">Stocks and Flows</div>
+                            <div class="roadmap-topic">What is System Dynamics?</div>
+                            <div class="roadmap-topic">Causal Loop Diagrams Basics</div>
+                            <div class="roadmap-topic">The Concept of Emergence</div>
+                            <div class="roadmap-topic">Interconnectedness in Systems</div>
+                            <div class="roadmap-topic">Simple System Models</div>
+                            <div class="roadmap-topic">Open vs. Closed Systems</div>
+                            <div class="roadmap-topic">Establishing System Boundaries</div>
+                            <div class="roadmap-topic">Introduction to Complexity</div>
+                            <div class="roadmap-topic">Systems Thinking in Everyday Life</div>
+                            <div class="roadmap-topic">Fundamental Terminology</div>
+                            <div class="roadmap-topic">The Role of Nonlinearity</div>
+                            <div class="roadmap-topic">Understanding Time Delays</div>
+                            <div class="roadmap-topic">Introduction to Simulation</div>
+                            <div class="roadmap-topic">The Concept of Leverage Points</div>
+                            <div class="roadmap-topic">Dynamic Equilibrium</div>
+                            <div class="roadmap-topic">Cause-and-Effect in Systems</div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-section">
+                        <h3 class="roadmap-title">Intermediate Level (Topics 21-40)</h3>
+                        <div class="roadmap-topics">
+                            <div class="roadmap-topic">Constructing Causal Loop Diagrams</div>
+                            <div class="roadmap-topic">Stock and Flow Mapping Techniques</div>
+                            <div class="roadmap-topic">Balancing vs. Reinforcing Feedback</div>
+                            <div class="roadmap-topic">Introduction to Systems Archetypes</div>
+                            <div class="roadmap-topic">Basic Simulation Modeling</div>
+                            <div class="roadmap-topic">Analyzing Time Delays</div>
+                            <div class="roadmap-topic">Intermediate Complexity</div>
+                            <div class="roadmap-topic">Modeling Population Dynamics</div>
+                            <div class="roadmap-topic">Causal Mapping in Social Systems</div>
+                            <div class="roadmap-topic">Supply Chain Modeling</div>
+                            <div class="roadmap-topic">Environmental System Dynamics</div>
+                            <div class="roadmap-topic">Analyzing Economic Systems</div>
+                            <div class="roadmap-topic">Understanding Policy Resistance</div>
+                            <div class="roadmap-topic">Basic Control Theory</div>
+                            <div class="roadmap-topic">Systems Thinking in Business</div>
+                            <div class="roadmap-topic">Organizational Learning</div>
+                            <div class="roadmap-topic">Modeling Resource Management</div>
+                            <div class="roadmap-topic">Feedback in Environmental Systems</div>
+                            <div class="roadmap-topic">Simple Oscillations</div>
+                            <div class="roadmap-topic">The Role of Randomness</div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-section">
+                        <h3 class="roadmap-title">Advanced Level (Topics 41-70)</h3>
+                        <div class="roadmap-topics">
+                            <div class="roadmap-topic">Advanced Feedback Loop Structures</div>
+                            <div class="roadmap-topic">Complex Causal Loop Diagrams</div>
+                            <div class="roadmap-topic">Behavior Analysis in Complex Systems</div>
+                            <div class="roadmap-topic">Advanced Simulation Techniques</div>
+                            <div class="roadmap-topic">Qualitative & Quantitative Models</div>
+                            <div class="roadmap-topic">Agent-Based Modeling</div>
+                            <div class="roadmap-topic">In-Depth Nonlinear Dynamics</div>
+                            <div class="roadmap-topic">Stability vs. Instability Analysis</div>
+                            <div class="roadmap-topic">Advanced Systems Archetypes</div>
+                            <div class="roadmap-topic">System Dynamics in Urban Planning</div>
+                            <div class="roadmap-topic">Applications in Healthcare</div>
+                            <div class="roadmap-topic">Advanced Supply Chain Dynamics</div>
+                            <div class="roadmap-topic">Environmental-Economic Modeling</div>
+                            <div class="roadmap-topic">Advanced Policy Design</div>
+                            <div class="roadmap-topic">Complex Organizational Dynamics</div>
+                            <div class="roadmap-topic">Hybrid Modeling Techniques</div>
+                            <div class="roadmap-topic">Multi-Sectoral Systems Analysis</div>
+                            <div class="roadmap-topic">Data-Driven System Identification</div>
+                            <div class="roadmap-topic">Advanced Control Theory</div>
+                            <div class="roadmap-topic">Chaos Theory in System Dynamics</div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-section">
+                        <h3 class="roadmap-title">Expert & Research Level (Topics 71-100)</h3>
+                        <div class="roadmap-topics">
+                            <div class="roadmap-topic">Expert-Level Systems Integration</div>
+                            <div class="roadmap-topic">Hybrid Agent-Based Models</div>
+                            <div class="roadmap-topic">Deep Structural Modeling</div>
+                            <div class="roadmap-topic">Expert Public Policy Analysis</div>
+                            <div class="roadmap-topic">Theoretical Foundations</div>
+                            <div class="roadmap-topic">Complex Adaptive Systems Theory</div>
+                            <div class="roadmap-topic">Expert-Level Network Analysis</div>
+                            <div class="roadmap-topic">Financial Systems Modeling</div>
+                            <div class="roadmap-topic">Climate Dynamics Simulation</div>
+                            <div class="roadmap-topic">Nonlinear System Analysis</div>
+                            <div class="roadmap-topic">Industrial System Modeling</div>
+                            <div class="roadmap-topic">Crisis Management</div>
+                            <div class="roadmap-topic">Multi-Agent Systems Modeling</div>
+                            <div class="roadmap-topic">Interdisciplinary Approaches</div>
+                            <div class="roadmap-topic">Innovations in Modeling</div>
+                            <div class="roadmap-topic">Sensitivity Analysis</div>
+                            <div class="roadmap-topic">Advanced Organizational Dynamics</div>
+                            <div class="roadmap-topic">Highly Complex Systems Behavior</div>
+                            <div class="roadmap-topic">Big Data Applications</div>
+                            <div class="roadmap-topic">Machine Learning Integration</div>
+                            <div class="roadmap-topic">Frontier Research</div>
+                            <div class="roadmap-topic">Quantum Computing Applications</div>
+                            <div class="roadmap-topic">Novel Feedback Analysis Algorithms</div>
+                            <div class="roadmap-topic">Multi-Dimensional Modeling</div>
+                            <div class="roadmap-topic">System Resilience Research</div>
+                            <div class="roadmap-topic">Dynamic Network Theory</div>
+                            <div class="roadmap-topic">Advanced Computational Techniques</div>
+                            <div class="roadmap-topic">Global Sustainability Models</div>
+                            <div class="roadmap-topic">AI in Dynamic Systems</div>
+                            <div class="roadmap-topic">Next-Generation Tools</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About SystemsThink</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Contributors</a></li>
+                        <li><a href="#">Academic Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Modeling Tools</a></li>
+                        <li><a href="#">Publications</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Meet-ups</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Get in Touch</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 SystemsThink | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
