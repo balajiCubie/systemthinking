@@ -591,7 +591,236 @@
             </div>
         </section>
     </main>
-    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Thinking & Dynamics Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Lighter gray-blue background */
+        }
+        /* Style for the active topic link (now a tag) */
+        .active-topic-tag {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Custom scrollbar for the roadmap */
+        #roadmap-container::-webkit-scrollbar {
+            height: 10px;
+        }
+        #roadmap-container::-webkit-scrollbar-track {
+            background: #e2e8f0; /* slate-200 */
+            border-radius: 10px;
+        }
+        #roadmap-container::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* slate-400 */
+            border-radius: 10px;
+            border: 2px solid #e2e8f0; /* Add border to match track */
+        }
+        #roadmap-container::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* slate-500 */
+        }
+        /* Horizontal scrollbar styles for Firefox */
+        #roadmap-container {
+            scrollbar-width: thin;
+            scrollbar-color: #94a3b8 #e2e8f0;
+        }
+         /* Style for the connector arrows - more prominent */
+        .roadmap-connector {
+            flex-shrink: 0;
+            color: #6b7280; /* gray-500 */
+            font-size: 2.5rem; /* Even larger arrow */
+            font-weight: 200; /* Thinner arrow */
+            line-height: 1;
+            opacity: 0.8;
+            align-self: center; /* Center vertically */
+            margin-top: -20px; /* Adjust vertical position slightly if needed */
+        }
+        /* Card styling */
+        .roadmap-level {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            border: 1px solid #e5e7eb; /* Add subtle border */
+        }
+        .roadmap-level:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+         /* Styling for topic tags */
+        .topic-tag {
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .topic-tag:hover {
+             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+             transform: scale(1.03);
+        }
+
+    </style>
+</head>
+<body class="bg-slate-100">
+
+    <div class="container mx-auto p-6 md:p-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-10 text-slate-800 tracking-tight">
+            System Thinking & Dynamics Learning Roadmap
+        </h1>
+
+        <div class="flex items-stretch space-x-4 md:space-x-6 pb-6 overflow-x-auto" id="roadmap-container">
+            </div>
+
+        <div id="topic-detail-area" class="mt-10 bg-white p-6 md:p-8 rounded-xl shadow-xl border border-slate-200">
+             <h2 id="topic-detail-title" class="text-2xl md:text-3xl font-semibold mb-5 text-slate-900 border-b border-slate-300 pb-3">
+                 Select a Topic
+             </h2>
+             <div id="topic-detail-content" class="text-slate-700 leading-relaxed prose prose-slate max-w-none">
+                 <p class="text-lg">Welcome! Click on any topic tag from the roadmap stages above to explore its details here.</p>
+                 <p class="mt-2 text-slate-600 italic">The roadmap progresses from foundational concepts on the left to cutting-edge research topics on the right.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Data: Topics extracted from the PDF ---
+        const topicsData = {
+          "Basic (1-20)": [
+            "Introduction to Systems Thinking - What is systems thinking and why it matters?", "Basic Components of a System - Understanding elements like actors, resources, and boundaries.", "Understanding Feedback Loops - An introduction to positive and negative feedback mechanisms.", "Stocks and Flows - The building blocks of system dynamics modeling.", "What is System Dynamics? - Overview of the discipline and its applications.", "Causal Loop Diagrams Basics - How to draw and interpret simple diagrams.", "The Concept of Emergence - How complex behaviors arise from simple interactions.", "Interconnectedness in Systems - Recognizing relationships among system parts.", "Simple System Models - Creating straightforward representations of real-world systems.", "Open vs. Closed Systems - The differences and implications in analysis.", "Establishing System Boundaries - Defining the scope of analysis in system thinking.", "Introduction to Complexity - Basic notions of complex systems and chaos.", "Systems Thinking in Everyday Life - Applying the mindset to routine decision-making.", "Fundamental Terminology in System Dynamics - Key concepts and vocabulary.", "The Role of Nonlinearity - How small changes can lead to big effects.", "Understanding Time Delays - Recognizing delays and their impacts on system behavior.", "Introduction to Simulation - Basic principles of simulating system dynamics.", "The Concept of Leverage Points - Identifying high-impact intervention points.", "Dynamic Equilibrium - Exploring stability in systems.", "Cause-and-Effect in Systems - Fundamental methods for mapping causal relationships."
+          ],
+          "Intermediate (21-40)": [
+            "Constructing Causal Loop Diagrams - Techniques for building more detailed diagrams.", "Stock and Flow Mapping Techniques - Methods for quantifying accumulations and rates.", "Balancing vs. Reinforcing Feedback - Deeper insight into different feedback loop types.", "Introduction to Systems Archetypes - Recognizing recurring patterns in dynamic systems.", "Basic Simulation Modeling Using Software (Vensim/Stella) - Hands-on modeling techniques.", "Analyzing Time Delays in System Behavior - Examining how delays affect system performance.", "Intermediate Complexity in Systems - Dealing with moderately complex interactions.", "Modeling Population Dynamics - Applying system dynamics to demographic studies.", "Causal Mapping in Social Systems - Understanding cause-effect in social and behavioral contexts.", "Fundamentals of Supply Chain Modeling - Analyzing flows and stocks in supply chain systems.", "Environmental System Dynamics - Basics of modeling resource use and environmental feedbacks.", "Analyzing Economic Systems - Introduction to system dynamics in economic modeling.", "Understanding Policy Resistance - How systems push back against change.", "Basic Control Theory in Systems - Fundamentals of feedback control processes.", "Systems Thinking in Business Operations - Applying concepts to improve organizational efficiency.", "Concepts in Organizational Learning - Using systems thinking to foster continuous improvement.", "Modeling Resource Management - Tools for understanding resource allocation and depletion.", "Feedback in Environmental Systems - Intermediate analysis of environmental feedback loops.", "Simple Oscillations in Dynamic Systems - Understanding cyclical behaviors in systems.", "The Role of Randomness in Systems - How uncertainty and variability influence dynamics."
+          ],
+          "Advanced (41-70)": [
+            "Advanced Feedback Loop Structures - Delving into multi-layered and nested feedback loops.", "Complex Causal Loop Diagrams - Techniques to represent and analyze intricate relationships.", "Behavior Analysis in Complex Systems - Methods for dissecting complex, dynamic behavior.", "Advanced Simulation Techniques - Expanding beyond basics with sophisticated simulation methods.", "Integrating Qualitative and Quantitative Models - Bridging narratives with numerical analysis.", "Agent-Based Modeling in Systems - Introducing discrete agents within dynamic system models.", "In-Depth Nonlinear Dynamics - Detailed study of nonlinearity and its consequences.", "Stability vs. Instability Analysis - Understanding factors that drive system stability.", "Advanced Systems Archetypes - Recognizing and leveraging deeper archetypal patterns.", "System Dynamics in Urban Planning - Applying models to urban development and policy.", "Applications in Healthcare Systems - Modeling patient flow, disease spread, and resource use.", "Advanced Supply Chain Dynamics - Complex modeling of supply chain disruptions and recovery.", "Integrated Environmental-Economic Modeling - Analyzing coupled human-natural systems.", "Advanced Policy Design with Systems Thinking - Crafting policies using simulation insights.", "Modeling Complex Organizational Dynamics - Understanding intricate processes in large organizations.", "Hybrid Modeling Techniques - Combining system dynamics with other modeling approaches.", "Multi-Sectoral Systems Analysis - Studying interactions across diverse sectors.", "Data-Driven System Identification - Using data to refine and validate dynamic models.", "Advanced Control Theory - Deeper exploration of control mechanisms in dynamic environments.", "Chaos Theory in System Dynamics - Examining sensitive dependence on initial conditions.", "Advanced Modeling of Technological Systems - Simulating the life cycle of technologies.", "Coupled Natural-Human Systems - Studying the interplay between environmental and social factors.", "Mitigating Unwanted Feedback Loops - Strategies to counteract negative systemic feedback.", "Deep Causal Analysis Techniques - Advanced methods for uncovering hidden causal chains.", "Sophisticated Simulation Software Use - Maximizing the potential of cutting-edge tools.", "Incorporating Human Behavior into Models - Techniques for including behavioral dynamics.", "Modeling and Enhancing System Resilience - Understanding and boosting system recovery capabilities.", "Advanced Scenario Planning and Forecasting - Creating robust future projections.", "Data Analytics in System Dynamics - Leveraging big data to inform dynamic models.", "Multi-Scale Systems Modeling - Managing system dynamics across different levels of resolution."
+          ],
+          "Expert (71-90)": [
+             "Expert-Level Systems Integration - Seamlessly integrating complex models across domains.", "Hybrid Agent-Based and System Dynamics Models - Expert approaches to combining modeling paradigms.", "Deep Structural Modeling Techniques - Cutting-edge methods for dissecting system structure.", "Expert Public Policy Analysis Using Systems Thinking - Advanced frameworks for evaluating policies.", "Theoretical Foundations of Advanced System Dynamics - In-depth exploration of core theories.", "Complex Adaptive Systems Theory - Studying systems that evolve and adapt over time.", "Expert-Level Network Analysis - Applying network theory in highly complex systems.", "Precision Modeling of Financial Systems - Nuanced analysis of financial markets and risk.", "Advanced Simulation of Climate Dynamics - Modeling climate change with high precision.", "Expert Techniques in Nonlinear System Analysis - Mastering complex nonlinear behaviors.", "Innovative Industrial System Modeling - Applications in manufacturing and industrial processes.", "Crisis Management through Systems Thinking - Developing models for rapid decision-making in crises.", "Advanced Multi-Agent Systems Modeling - Sophisticated approaches to distributed system simulation.", "Interdisciplinary Approaches to Complexity - Integrating insights from various scientific fields.", "Innovations in System Dynamics Modeling - Pushing the boundaries of traditional modeling techniques.", "Sensitivity Analysis and Uncertainty Quantification - Expert methods to handle model uncertainty.", "Advanced Organizational Dynamics - Deep dives into the behavior of large, complex organizations.", "Modeling Highly Complex Systems Behavior - Tools and techniques for dissecting intricate systems.", "Big Data Applications in System Dynamics - Harnessing large datasets to enhance model accuracy.", "Machine Learning Integration with System Dynamics - Merging Al with traditional dynamic modeling."
+          ],
+          "Supreme Research Level (91-100)": [
+            "Frontier Research in System Dynamics - Investigating the latest innovations and methodologies.", "Quantum Computing in Complex Systems Modeling - Exploring quantum approaches for simulation.", "Developing Novel Algorithms for Feedback Analysis - Researching breakthrough computational techniques.", "Multi-Dimensional Modeling of Socio-Economic Systems - Designing models that capture multiple layers of complexity.", "Breakthroughs in System Resilience Research - Pioneering new methods to increase system robustness.", "Theoretical Advances in Dynamic Network Theory - Pushing the envelope in network-based system analysis.", "Advanced Computational Techniques in System Dynamics - Integrating high-performance computing into modeling.", "Supreme Integrative Models for Global Sustainability - Researching comprehensive frameworks for sustainability.", "Frontier Applications of Al in Dynamic Systems - Innovating with artificial intelligence in complex feedback systems.", "Next-Generation Tools for System Dynamics Research - Developing the future of modeling and simulation platforms."
+          ]
+        };
+
+        // --- DOM Elements ---
+        const roadmapContainer = document.getElementById('roadmap-container');
+        const topicDetailArea = document.getElementById('topic-detail-area');
+        const topicDetailTitle = document.getElementById('topic-detail-title');
+        const topicDetailContent = document.getElementById('topic-detail-content');
+
+        // --- Function to generate roadmap ---
+        function generateRoadmap() {
+            roadmapContainer.innerHTML = ''; // Clear existing content
+            const levels = Object.keys(topicsData);
+
+            levels.forEach((level, index) => {
+                // Create the card for the difficulty level
+                const levelCard = document.createElement('div');
+                levelCard.classList.add(
+                    'roadmap-level', 'bg-white', 'p-5', 'rounded-xl', // More padding, larger radius
+                    'shadow-lg', 'w-64', 'md:w-80', 'flex-shrink-0', // Larger cards, more shadow
+                    'border-t-4', 'flex', 'flex-col' // Flex column layout for card content
+                 );
+
+                // Assign border color based on level
+                const borderColors = ['border-blue-500', 'border-green-500', 'border-orange-500', 'border-red-500', 'border-purple-600'];
+                levelCard.classList.add(borderColors[index % borderColors.length]);
+
+                // Level Title
+                const title = document.createElement('h2');
+                title.classList.add(
+                    'text-xl', 'md:text-2xl', 'font-semibold', 'mb-4', // Larger title, more margin
+                    'border-b', 'border-slate-200', 'pb-2', 'text-slate-800' // Subtler border
+                );
+                title.textContent = level;
+                levelCard.appendChild(title);
+
+                // Container for Topic Tags (allows wrapping)
+                const tagsContainer = document.createElement('div');
+                tagsContainer.classList.add('flex', 'flex-wrap', 'gap-2', 'mt-2'); // Use gap for spacing, allow wrapping
+
+                topicsData[level].forEach(topic => {
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.textContent = topic.split(' - ')[0]; // Show short title
+                    link.title = topic; // Full title on hover
+                    link.classList.add(
+                        'topic-tag', // Custom class for potential specific styling/JS targeting
+                        'inline-block', 'bg-slate-200', 'hover:bg-blue-200', // Backgrounds
+                        'text-slate-700', 'hover:text-blue-800', // Text colors
+                        'rounded-full', 'px-3', 'py-1', // Padding and shape
+                        'text-xs', 'font-medium', // Text size and weight
+                        'cursor-pointer', 'transition-all', 'duration-150' // Interaction and transition
+                    );
+                    link.dataset.topic = topic; // Store full topic
+                    link.addEventListener('click', handleTopicClick);
+                    tagsContainer.appendChild(link); // Add link to tags container
+                });
+
+                levelCard.appendChild(tagsContainer); // Add tags container to card
+                roadmapContainer.appendChild(levelCard); // Add card to roadmap
+
+                // Add connector arrow (except after the last item)
+                if (index < levels.length - 1) {
+                    const connector = document.createElement('div');
+                    connector.classList.add('flex', 'items-center', 'justify-center', 'roadmap-connector');
+                    // Using a lighter, slightly more modern arrow symbol
+                    connector.innerHTML = '&#10230;'; // Alternative arrow: → (thin) or ⇒ (double) or ❯ (chevron)
+                    roadmapContainer.appendChild(connector);
+                }
+            });
+        }
+
+        // --- Function to handle topic link click ---
+        function handleTopicClick(event) {
+            event.preventDefault(); // Prevent page jump
+            const link = event.target;
+            const fullTopic = link.dataset.topic;
+
+            // Update the detail area
+            topicDetailTitle.textContent = fullTopic;
+            topicDetailContent.innerHTML = `
+                <h3 class="text-xl font-semibold mb-3 text-slate-800">Overview</h3>
+                <p class="mb-4 text-slate-600">
+                    Explore the details of "${fullTopic}". This section would ideally contain comprehensive explanations, key principles, illustrative examples, relevant diagrams (like Causal Loop or Stock & Flow maps), and potentially interactive elements or links to further resources.
+                </p>
+                <h4 class="font-semibold text-lg mb-2 text-slate-800">Key Areas (Example)</h4>
+                <ul class="list-disc list-inside mb-4 text-slate-600 space-y-1">
+                    <li>Core Definitions & Concepts</li>
+                    <li>Practical Applications & Examples</li>
+                    <li>Methodologies & Techniques</li>
+                    <li>Common Challenges & Considerations</li>
+                    <li>Connections to Other Topics</li>
+                </ul>
+                <div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 rounded-r-lg text-blue-900">
+                    <p><span class="font-bold">Note:</span> This is placeholder content demonstrating the layout. Actual learning material for each topic needs to be integrated.</p>
+                </div>
+            `;
+
+            // Scroll detail area into view if needed
+            topicDetailArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // --- Update active link styling ---
+            // Remove active class from all tags
+            document.querySelectorAll('.topic-tag').forEach(tag => tag.classList.remove('active-topic-tag', 'bg-blue-500', 'text-white'));
+            // Add active class to the clicked tag
+            link.classList.add('active-topic-tag', 'bg-blue-500', 'text-white');
+            // Ensure base styles are reapplied correctly if needed, though Tailwind handles precedence well.
+        }
+
+        // --- Initial setup ---
+        document.addEventListener('DOMContentLoaded', () => {
+            generateRoadmap(); // Build the roadmap when the page loads
+        });
+
+    </script>
+
+</body>
+</html>
+
     <footer>
         <div class="container">
             <div class="footer-container">
